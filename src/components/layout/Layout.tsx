@@ -1,8 +1,11 @@
+import { Outlet } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+
 function Layout() {
+ 
   return (
     <>
       <div className="layout-wrapper layout-content-navbar">
@@ -20,7 +23,7 @@ function Layout() {
             {/* Content wrapper */}
             <div className="content-wrapper">
               {/* Content */}
-              <Dashboard />
+              <Outlet />
               {/* / Content */}
 
               {/* Footer */}
