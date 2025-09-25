@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/layout/Layout.tsx'
 import Navbar from './components/layout/Navbar.tsx'
 import Dashboard from './components/pages/Dashboard.tsx'
+import Products from './components/pages/Products.tsx'
 
 const links = createBrowserRouter([
   {path: '/', element: <Layout />,
@@ -15,9 +16,13 @@ const links = createBrowserRouter([
       {index: true, element: <Dashboard />},
       // {path: '/', element: <Dashboard />},
       {path: '/dashboard', element: <Dashboard />},
-      {path: '/products', element: <h1>Products List</h1>},
+      {path: '/products', element: <Products />},
+      {path: '/sales', element: <h1>Sales</h1>},
+      {path: '/users', element: <h1>Users List</h1>},
+      {path: '/roles', element: <h1>Roles</h1>},
     ]
   },
+  {path: '/pos', element: <h1>POS</h1>},
   {path: '/login', element: <h1>login</h1>},
   {path: '*', element: <h1 className='text-danger text-center my-5'>404 Page not found</h1>},
 ]);

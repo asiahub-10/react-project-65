@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom"
 
 function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen((prev) => !prev);
   return (
     <>
     <input type="checkbox" id="sidebarMenu" className="d-none" />
@@ -19,21 +23,55 @@ function Sidebar() {
 
             <ul className="menu-inner py-1">
               {/* Dashboard */}
-              <li className="menu-item active">
-                <Link to="/dashboard" className="menu-link">
+              <NavLink to="/" className="menu-item">
+                <li className="menu-link">
                   <i className="menu-icon tf-icons bx bx-home-circle"></i>
                   <div data-i18n="Analytics">Dashboard</div>
-                </Link>
-              </li>
+                </li>
+              </NavLink>
+
+              {/* Custom Menu */}
+              <li className="menu-item">
+                <NavLink to="/pos" className="menu-link" target="_blank">
+                  <i className="menu-icon tf-icons bx bx-layout"></i>
+                  <div data-i18n="Analytics">POS</div>
+                </NavLink>
+              </li>              
+              <NavLink to="/products" className={({isActive})=>isActive ? "menu-item active" : "menu-item"}>
+                <li className="menu-link">
+                  <i className="menu-icon tf-icons bx bx-box"></i>
+                  <div data-i18n="Analytics">Products</div>
+                </li>
+              </NavLink>
+              <NavLink to="/sales" className="menu-item">
+                <li className="menu-link">
+                  <i className="menu-icon tf-icons bx bx-clipboard"></i>
+                  <div data-i18n="Analytics">Sales</div>
+                </li>
+              </NavLink>
+              <NavLink to="/users" className="menu-item">
+                <li className="menu-link">
+                  <i className="menu-icon tf-icons bx bx-user"></i>
+                  <div data-i18n="Analytics">Users</div>
+                </li>
+              </NavLink>
+              <NavLink to="/roles" className="menu-item">
+                <li className="menu-link">
+                  <i className="menu-icon tf-icons bx bx-briefcase-alt-2"></i>
+                  <div data-i18n="Analytics">Role</div>
+                </li>
+              </NavLink>
 
               {/* Layouts */}
+               <li className="menu-header small text-uppercase">
+                <span className="menu-header-text">Layout</span>
+              </li>
               <li className="menu-item">
-                <a href="javascript:void(0);" className="menu-link menu-toggle">
+                <span onClick={toggle} className="menu-link menu-toggle cursor-pointer">
                   <i className="menu-icon tf-icons bx bx-layout"></i>
                   <div data-i18n="Layouts">Layouts</div>
-                </a>
-
-                <ul className="menu-sub">
+                </span>
+                <ul className={`menu-sub ${isOpen ? 'open' : 'closed'}`}>
                   <li className="menu-item">
                     <a href="layouts-without-menu.html" className="menu-link">
                       <div data-i18n="Without menu">Without menu</div>

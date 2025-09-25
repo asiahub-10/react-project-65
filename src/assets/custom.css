@@ -24,3 +24,23 @@ Sidebar Toggle
         z-index: 1090;
     }
 }
+
+.menu-sub {
+  display: block !important;
+  transition: all .3s ease-in-out !important;
+}
+
+.menu-sub.open {
+  max-height: 500px; /* enough for submenu height */
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible; 
+}
+
+.menu-sub.closed {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
