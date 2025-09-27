@@ -1,14 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './assets/custom.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/layout/Layout.tsx'
-import Navbar from './components/layout/Navbar.tsx'
 import Dashboard from './components/pages/Dashboard.tsx'
 import Products from './components/pages/Products.tsx'
+import ManagePosts from './components/pages/posts/ManagePosts.tsx'
+import CreatePost from './components/pages/posts/CreatePost.tsx'
 
 const links = createBrowserRouter([
   {path: '/', element: <Layout />,
@@ -20,6 +20,8 @@ const links = createBrowserRouter([
       {path: '/sales', element: <h1>Sales</h1>},
       {path: '/users', element: <h1>Users List</h1>},
       {path: '/roles', element: <h1>Roles</h1>},
+      {path: '/posts', element: <ManagePosts/>},
+      {path: '/post/create', element: <CreatePost/>},
     ]
   },
   {path: '/pos', element: <h1>POS</h1>},
