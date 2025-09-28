@@ -84,9 +84,12 @@ function getData() {
                                 <td>{item.body}</td>
                                 <td>
                                     <div className="d-flex gap-1">
-                                        <button type="button" className="btn btn-icon btn-outline-primary">
+                                        <Link to={`/post/details/${item.id}`} type="button" className="btn btn-icon btn-outline-info">
+                                            <span className="tf-icons bx bx-search"></span>
+                                        </Link>
+                                        <Link to={`/post/edit/${item.id}`} type="button" className="btn btn-icon btn-outline-primary">
                                             <span className="tf-icons bx bx-edit"></span>
-                                        </button>
+                                        </Link>
                                         <button type="button" className="btn btn-icon btn-outline-danger">
                                             <span className="tf-icons bx bx-trash"></span>
                                         </button>

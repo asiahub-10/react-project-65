@@ -9,9 +9,26 @@ function CreatePost() {
 
     // axios API
     // -------------------
-    function postData() {
-        alert("Form submitted successfully");
+    function postData(e: React.FormEvent) {
+      e.preventDefault();
+        // alert("Form submitted successfully");
+      // console.log("Title: "+ title);
+      // console.log("Body: "+ body);
+      const data = {title, body};
+      axios.post("https://jsonplaceholder.typicode.com/posts", data)
+      .then((res)=>{
+        console.log(res);
+        setTitle(""); 
+        setBody("");
+        alert("Data saved successfully");
+      })
+      .catch((err)=>console.error(err));
     }
+
+    // useEffect(()=>{
+    //   console.log("Title: "+ title);
+    //   console.log("Body: "+ body);
+    // },[title, body]);
 
   return (
     <>
@@ -21,13 +38,14 @@ function CreatePost() {
         <h5 className="card-header">Create Post</h5>
         <div className="card-body">
             <form onSubmit={postData}>
+                <h2>Title: {title}</h2>
                 <div className="mb-3">
                     <label className="form-label">Title</label>
-                    <input type="text" name="title" className="form-control" />
+                    <input type="text" name="title" className="form-control" value={title} onChange={(e)=>setTitle(e.target.value)} />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Body</label>
-                    <textarea name="body" className="form-control" rows={4}></textarea>
+                    <textarea name="body" className="form-control" rows={4} value={body} onChange={(e)=>setBody(e.target.value)}></textarea>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
