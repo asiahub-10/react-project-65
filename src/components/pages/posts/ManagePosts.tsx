@@ -55,6 +55,17 @@ function getData() {
     });
 }
 
+const handleDelete = (id: number) => {
+    // console.log(id+" confirm delete.");
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then((res)=>{
+        console.log(res);
+    })
+    .catch((err)=>{
+        console.error(err);
+    });
+}
+
   return (
     <>
     <div className="container-xxl flex-grow-1 container-p-y">
@@ -90,7 +101,8 @@ function getData() {
                                         <Link to={`/post/edit/${item.id}`} type="button" className="btn btn-icon btn-outline-primary">
                                             <span className="tf-icons bx bx-edit"></span>
                                         </Link>
-                                        <button type="button" className="btn btn-icon btn-outline-danger">
+                                        <button type="button" onClick={()=>{confirm("Are you sure to delete?") 
+                                            && handleDelete(item.id)}} className="btn btn-icon btn-outline-danger">
                                             <span className="tf-icons bx bx-trash"></span>
                                         </button>
                                     </div>
