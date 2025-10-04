@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import type { Role } from './ManageRoles'
 import axios from 'axios'
-import baseApiUrl from '../../../baseUrl'
+import api from '../../../config'
 
 function CreateRole() {
     const [role, setRole] = useState<Role>({
@@ -13,7 +13,7 @@ function CreateRole() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // console.log(role);
-        axios.post(`${baseApiUrl}/create-role`, role)
+        api.post(`create-role`, role)
         .then((res)=>{
             console.log(res);
             alert("Data saved successfully");

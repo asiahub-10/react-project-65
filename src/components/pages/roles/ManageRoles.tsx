@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import baseApiUrl from '../../../baseUrl'
+import api from '../../../config'
 
 export interface Role {
     id: number;
@@ -19,7 +19,7 @@ function ManageRoles() {
     // },[roles]);
 
     const getRoles = () => {
-        axios.get(`${baseApiUrl}roles`)
+        api.get(`roles`)
         .then((res)=>{
             console.log(res.data);
             setRoles(res.data);
