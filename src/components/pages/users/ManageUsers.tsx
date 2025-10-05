@@ -2,6 +2,7 @@ import { useEffect,useState } from "react";
 import api from "../../../config";
 import type { User } from "../../../interfaces/user.interface";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../../../config";
 
 function ManageUsers() {
   const [users, setUsers] = useState<User[]>([]);
@@ -41,7 +42,9 @@ function ManageUsers() {
                         users.map((user) => (
                             <tr key={user.id}>
                                 <td>{user.id}</td>
-                                <td>{user.name}</td>
+                                <td>{user.name}
+                                    {user.photo ? <img src={baseUrl+user.photo} alt="user" className="rounded-circle" width="40" /> : null}
+                                </td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
                                 <td>
