@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Link, useParams } from "react-router-dom"
-import { use, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function EditPost() {
     const [post,setPost] = useState({

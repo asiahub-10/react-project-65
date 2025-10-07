@@ -15,6 +15,7 @@ import ManageRoles from './components/pages/roles/ManageRoles.tsx'
 import CreateRole from './components/pages/roles/CreateRole.tsx'
 import ManageUsers from './components/pages/users/ManageUsers.tsx'
 import CreateUser from './components/pages/users/CreateUser.tsx'
+import EditRole from './components/pages/roles/EditRole.tsx'
 
 const links = createBrowserRouter([
   {path: '/', element: <Layout />,
@@ -32,6 +33,7 @@ const links = createBrowserRouter([
       {path: '/post/edit/:id', element: <EditPost/>},
       {path: '/roles', element: <ManageRoles/>},
       {path: '/create-role', element: <CreateRole/>},
+      {path: '/update-role/:id', element: <EditRole/>},
     ]
   },
   {path: '/pos', element: <h1>POS</h1>},

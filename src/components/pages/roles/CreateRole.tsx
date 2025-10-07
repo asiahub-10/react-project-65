@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import type { Role } from './ManageRoles'
-import axios from 'axios'
 import api from '../../../config'
 
 function CreateRole() {
