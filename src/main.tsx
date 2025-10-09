@@ -16,6 +16,11 @@ import CreateRole from './components/pages/roles/CreateRole.tsx'
 import ManageUsers from './components/pages/users/ManageUsers.tsx'
 import CreateUser from './components/pages/users/CreateUser.tsx'
 import EditRole from './components/pages/roles/EditRole.tsx'
+import ManageCustomer from './components/pages/customers/ManageCustomer.tsx'
+import EditCustomer from './components/pages/customers/EditCustomer.tsx'
+import CreateCustomer from './components/pages/customers/CreateCustomer.tsx'
+import DetailsCustomer from './components/pages/customers/DetailsCustomer.tsx'
+import Login from './components/pages/Login.tsx'
 
 const links = createBrowserRouter([
   {path: '/', element: <Layout />,
@@ -34,10 +39,16 @@ const links = createBrowserRouter([
       {path: '/roles', element: <ManageRoles/>},
       {path: '/create-role', element: <CreateRole/>},
       {path: '/update-role/:id', element: <EditRole/>},
+
+      // Customers Route
+      {path: '/customers', element: <ManageCustomer/>},
+      {path: '/create-customer', element: <CreateCustomer/>},
+      {path: '/customer/edit/:id', element: <EditCustomer/>},
+      {path: '/customer/details/:id', element: <DetailsCustomer/>},
     ]
   },
   {path: '/pos', element: <h1>POS</h1>},
-  {path: '/login', element: <h1>login</h1>},
+  {path: '/login', element: <Login />},
   {path: '*', element: <h1 className='text-danger text-center my-5'>404 Page not found</h1>},
 ]);
 
