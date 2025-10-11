@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import api from '../../../config'
+import axios from 'axios';
 
 export interface Role {
     id: number;
@@ -19,6 +20,19 @@ function ManageRoles() {
     // },[roles]);
 
     const getRoles = () => {
+      // axios.get("http://localhost/php-react-api/api/roles",{
+      //   headers:{
+      //     "Content-Type":"application/json",
+      //     "Authorization": `Bearer ${localStorage.getItem("bearer_token")}`
+      //   }
+      // })
+      //   .then((res) => {
+      //     // console.log(res.data);
+      //     setRoles(res.data);
+      //   })
+      //   .catch((err) => {
+      //     console.error(err);
+      //   })
         api.get(`roles`)
         .then((res)=>{
             console.log(res.data);

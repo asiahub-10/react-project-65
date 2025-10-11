@@ -1,5 +1,12 @@
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const redirect = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('bearer_token');
+    // localStorage.removeItem('user_name');
+    redirect('/login');
+  };
  
   return (
     <>
@@ -90,7 +97,7 @@ function Navbar() {
                         <div className="dropdown-divider"></div>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="auth-login-basic.html">
+                        <a className="dropdown-item cursor-pointer" onClick={handleLogout}>
                           <i className="bx bx-power-off me-2"></i>
                           <span className="align-middle">Log Out</span>
                         </a>

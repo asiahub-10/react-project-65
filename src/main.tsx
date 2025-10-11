@@ -21,9 +21,10 @@ import EditCustomer from './components/pages/customers/EditCustomer.tsx'
 import CreateCustomer from './components/pages/customers/CreateCustomer.tsx'
 import DetailsCustomer from './components/pages/customers/DetailsCustomer.tsx'
 import Login from './components/pages/Login.tsx'
+import {requireAuth, redirectIfAuthenticated} from './utils/auth.ts'
 
 const links = createBrowserRouter([
-  {path: '/', element: <Layout />,
+  {path: '/', element: <Layout />, loader: requireAuth,
     children: [
       {index: true, element: <Dashboard />},
       // {path: '/', element: <Dashboard />},
@@ -48,7 +49,7 @@ const links = createBrowserRouter([
     ]
   },
   {path: '/pos', element: <h1>POS</h1>},
-  {path: '/login', element: <Login />},
+  {path: '/login', element: <Login />, loader: redirectIfAuthenticated},
   {path: '*', element: <h1 className='text-danger text-center my-5'>404 Page not found</h1>},
 ]);
 
