@@ -1,16 +1,15 @@
-import { useEffect,useState } from "react";
+import { useEffect,useState,useRef } from "react";
 import api from "../../../config";
 import type { User } from "../../../interfaces/user.interface";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../../config";
+import DataTable from 'datatables.net-dt';
 
 function ManageUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [userId, setUserId] = useState<number | undefined>(0);
-  useEffect(() => {
-    document.title = "Manage Users";
-    getUsers();
-  },[]);
+  const tableRef = useRef(null);
+
   const getUsers = () => {
     api.get("users")
     .then((res) => {
@@ -21,6 +20,21 @@ function ManageUsers() {
       console.error(err);
     })
   }
+  
+  useEffect(() => {
+    document.title = "Manage Users";
+    getUsers();
+  },[]);
+  useEffect(() => {
+    if (users.length > 0 && tableRef.current) {
+      // Initialize DataTable
+      const dt = new DataTable(tableRef.current);
+      return () => {
+        dt.destroy();
+      };
+    }
+  }, [users]);  
+
   function handleDelete(user_id:any){
     // alert("delete id: "+id);
 
@@ -38,7 +52,7 @@ function ManageUsers() {
     .catch((err) => {
       console.error(err);
     })
-  }
+  }  
   
   return (
     <>
@@ -46,8 +60,8 @@ function ManageUsers() {
       <h4 className="fw-bold py-3 mb-4"><span className="text-muted fw-light">Users /</span> Manage</h4>
       <Link to="/create-user" className="btn btn-primary">Add New</Link>
       <div className="card mt-3">
-        <div className="table-responsive">
-            <table className="table table-striped">
+        <div className="table-responsive px-2">          
+            <table ref={tableRef} className="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>

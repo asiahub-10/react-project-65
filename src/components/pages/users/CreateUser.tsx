@@ -67,7 +67,8 @@ function CreateUser() {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Role</label>
-                    <select name="role_id" className="form-select" onChange={(e)=>setUser({...user, role_id: parseInt(e.target.value)})}>
+                    <select name="role_id" className="form-select" value={user.role_id} onChange={(e)=>setUser({...user, role_id: parseInt(e.target.value)})}>
+                        <option value="0" disabled>Select one...</option>
                         {
                             roles.map((role)=>
                                 <option value={role.id} key={role.id}>{role.name}</option>

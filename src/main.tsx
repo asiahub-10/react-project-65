@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './assets/custom.css'
+
+// Datatable
+import 'datatables.net-dt/css/dataTables.dataTables.css'; // include styles
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/layout/Layout.tsx'
 import Dashboard from './components/pages/Dashboard.tsx'
@@ -22,6 +26,11 @@ import CreateCustomer from './components/pages/customers/CreateCustomer.tsx'
 import DetailsCustomer from './components/pages/customers/DetailsCustomer.tsx'
 import Login from './components/pages/Login.tsx'
 import {requireAuth, redirectIfAuthenticated} from './utils/auth.ts'
+
+import ManageProductTag from './components/pages/product-tags/ManageProductTag.tsx';
+import CreateProductTag from './components/pages/product-tags/CreateProductTag.tsx';
+import EditProductTag from './components/pages/product-tags/EditProductTag.tsx';
+import DetailsProductTag from './components/pages/product-tags/DetailsProductTag.tsx';
 
 const links = createBrowserRouter([
   {path: '/', element: <Layout />, loader: requireAuth,
@@ -46,6 +55,12 @@ const links = createBrowserRouter([
       {path: '/create-customer', element: <CreateCustomer/>},
       {path: '/customer/edit/:id', element: <EditCustomer/>},
       {path: '/customer/details/:id', element: <DetailsCustomer/>},
+
+      // ProductTags Routes
+      { path: '/product-tags', element: <ManageProductTag/> },
+      { path: '/product-tags/create', element: <CreateProductTag/> },
+      { path: '/product-tags/edit/:id', element: <EditProductTag/> },
+      { path: '/product-tags/details/:id', element: <DetailsProductTag/> },
     ]
   },
   {path: '/pos', element: <h1>POS</h1>},
