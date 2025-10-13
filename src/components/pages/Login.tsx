@@ -23,7 +23,7 @@ function Login() {
                 // console.log(res.data);
                 // alert(res.data.success);
                 localStorage.setItem("bearer_token", res.data.token);
-                localStorage.setItem("user_name", res.data.user_data.name);
+                // localStorage.setItem("user_name", res.data.user_data.name);
                 redirect("/dashboard");
             }
         })

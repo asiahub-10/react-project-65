@@ -67,6 +67,12 @@ function Sidebar() {
                   <div data-i18n="Analytics">Product Tags</div>
                 </li>
               </NavLink>
+              <NavLink to="/categories" className="menu-item">
+                <li className="menu-link">
+                  <i className="menu-icon tf-icons bx bx-box"></i>
+                  <div data-i18n="Analytics">Categories</div>
+                </li>
+              </NavLink>
               <NavLink to="/posts" className="menu-item">
                 <li className="menu-link">
                   <i className="menu-icon tf-icons bx bx-message-minus"></i>

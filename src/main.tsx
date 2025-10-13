@@ -31,6 +31,8 @@ import ManageProductTag from './components/pages/product-tags/ManageProductTag.t
 import CreateProductTag from './components/pages/product-tags/CreateProductTag.tsx';
 import EditProductTag from './components/pages/product-tags/EditProductTag.tsx';
 import DetailsProductTag from './components/pages/product-tags/DetailsProductTag.tsx';
+import ManageCategories from './components/pages/categories/ManageCategories.tsx';
+import CreateCategory from './components/pages/categories/CreateCategory.tsx';
 
 const links = createBrowserRouter([
   {path: '/', element: <Layout />, loader: requireAuth,
@@ -61,6 +63,9 @@ const links = createBrowserRouter([
       { path: '/product-tags/create', element: <CreateProductTag/> },
       { path: '/product-tags/edit/:id', element: <EditProductTag/> },
       { path: '/product-tags/details/:id', element: <DetailsProductTag/> },
+
+      { path: '/categories', element: <ManageCategories/> },
+      { path: '/create-category', element: <CreateCategory/> },
     ]
   },
   {path: '/pos', element: <h1>POS</h1>},
